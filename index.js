@@ -1,5 +1,5 @@
-  //Dados das perguntas
-  const perguntas = [
+   //Dados das perguntas
+   const perguntas = [
     {
       pergunta: 'Em um ambiente de trabalho ideal para promover a saúde mental, qual desses elementos seria menos relevante?',
       respostas: [
