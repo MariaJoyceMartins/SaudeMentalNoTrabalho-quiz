@@ -1,5 +1,4 @@
-   //Dados das perguntas
-   const perguntas = [
+const perguntas = [
     {
       pergunta: 'Em um ambiente de trabalho ideal para promover a saúde mental, qual desses elementos seria menos relevante?',
       respostas: [
@@ -65,36 +64,29 @@
     },
   ];
 
-// Coloca 1 perguntas na tela
 const quiz = document.querySelector('#quiz')
 const template = document.querySelector('template')
 const quizItem = template.content.cloneNode(true)
 quiz.appendChild(quizItem)
 
-//Calcula o valor de respostas certas
 const corretas = new Set()
 const totalDePerguntas = perguntas.length
 const mostrarTotal = document.querySelector('#acertos span')
 mostrarTotal.textContent = corretas.size + ' de ' + totalDePerguntas
 
-//loop das perguntas
 for(const item of perguntas) {
 const quizItem = template.content.cloneNode(true)
 quizItem.querySelector('h3').textContent = item.pergunta
 
-// Opções de resposta
 for(let resposta of item.respostas ) {
   const dt = quizItem.querySelector('dl dt').cloneNode(true)
 dt.querySelector('span').textContent = resposta
 
-//Código para botão de opções de resposta
 dt.querySelector('input').setAttribute('name', 'pergunta-' + 
 perguntas.indexOf(item))
 
-//Atribuir valor a respostas
 dt.querySelector('input').value = item.respostas.indexOf(resposta)
 
-//Código para atribuir 'certo' ou 'errado' a uma resposta
 dt.querySelector('input').onchange = (event) => {
  const estaCorreta = event.target.value == item.correta
 
@@ -109,10 +101,8 @@ mostrarTotal.textContent = corretas.size + ' de ' + totalDePerguntas
 quizItem.querySelector('dl').appendChild(dt)
 }
 
-//Remoção do ''A'' como opção
 quizItem.querySelector('dl dt').remove()
 
-//Coloca a pergunta na tela
 quiz.appendChild(quizItem)
 
 }
